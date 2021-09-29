@@ -39,4 +39,13 @@ class AffiliateRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function findPaginated(int $page = 1, int $size = 10)
+    {
+        return $this->createQueryBuilder('a')
+            ->setMaxResults($size)
+            ->setFirstResult(($page - 1) * $size)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
 }

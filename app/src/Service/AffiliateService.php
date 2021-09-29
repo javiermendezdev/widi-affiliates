@@ -35,21 +35,21 @@ class AffiliateService
     //     return $this->affiliateRepository->find($id);
     // }
 
-    // public function listAffiliates(int $page = 1, int $size = 10): array
-    // {
-    //     $items = $this->affiliateRepository->findPaginated($page, $size);
-    //     $total = $this->affiliateRepository->count([]);
+    public function listAffiliates(int $page = 1, int $size = 10): array
+    {
+        $items = $this->affiliateRepository->findPaginated($page, $size);
+        $total = $this->affiliateRepository->count([]);
 
-    //     //TODO: pass to custom dto and return this generated dto
-    //     return [
-    //         "_metadata" => [
-    //             "page" => $page,
-    //             "size" => $size,
-    //             "total" => $total,
-    //         ],
-    //         "items" => $items,
-    //     ];
-    // }
+        //TODO: pass to custom dto and return this generated dto
+        return [
+            "_metadata" => [
+                "page" => $page,
+                "size" => $size,
+                "total" => $total,
+            ],
+            "items" => $items,
+        ];
+    }
 
     public function createAffiliate(string $email, string $firstname, string $lastname): Affiliate
     {

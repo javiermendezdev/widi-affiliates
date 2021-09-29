@@ -47,20 +47,18 @@ services:
         autoconfigure: fale
         arguments: ['@Symfony\Component\Validator\Validator\ValidatorInterface','@App\Repository\AffiliateRepository']
 
-    # # ACTIONS:
-    # App\Action\XGetAction:
-    #     class: App\Action\XGetAction
-    #     public: true
-    #     autowire: false
-    #     autoconfigure: fale
-    #     arguments: ['@App\Service\XService']
-
-
+    #ACTIONS:
     App\Action\AffiliateCreateAction:
         class: App\Action\AffiliateCreateAction
         public: true
         autowire: false
         autoconfigure: false
+        arguments: ['@App\Service\AffiliateService']
+    App\Action\AffiliateListAction:
+        class: App\Action\AffiliateListAction
+        public: true
+        autowire: false
+        autoconfigure: fale
         arguments: ['@App\Service\AffiliateService']
 
 

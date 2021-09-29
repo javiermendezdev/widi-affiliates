@@ -12,6 +12,11 @@ api_affiliate_create:
    controller: App\Action\AffiliateCreateAction
    methods: [POST]
 
+api_affiliate_list:
+   path: /api/affiliates
+   methods: [GET]
+   controller: App\Action\AffiliateListAction
+
 not_found:
    path: /{path}
    controller: App\Controller\DefaultController::notFound
