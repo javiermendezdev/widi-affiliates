@@ -3,12 +3,10 @@
 namespace App\Tests\Base;
 
 use Lcobucci\JWT\Token\DataSet;
-use Namshi\JOSE\JWT;
 use Lcobucci\JWT\Token\Parser;
 use Lcobucci\JWT\Encoding\JoseEncoder;
 use Symfony\Component\HttpFoundation\Response;
-use App\Tests\Mocks\Auth\TokenJWTMockGenerator;
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use App\Tests\Utilities\TokenJWTGenerator;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -58,7 +56,7 @@ class CustomApiTestCase extends WebTestCase
     {
         $headers = [
             'HTTP_Content-type' => 'application/json',
-            'HTTP_Authorization' => 'Bearer ' . TokenJWTMockGenerator::getTokenForAdmin("admin"),
+            'HTTP_Authorization' => 'Bearer ' . TokenJWTGenerator::getTokenForAdmin("admin"),
         ];
 
         $client = static::createClient();
@@ -71,7 +69,7 @@ class CustomApiTestCase extends WebTestCase
     {
         $headers = [
             'HTTP_Content-type' => 'application/json',
-            'HTTP_Authorization' => 'Bearer ' . TokenJWTMockGenerator::getTokenForAdmin("admin"),
+            'HTTP_Authorization' => 'Bearer ' . TokenJWTGenerator::getTokenForAdmin("admin"),
         ];
 
         $client->disableReboot();
@@ -98,7 +96,7 @@ class CustomApiTestCase extends WebTestCase
     {
         $headers = [
             'Content-type' => 'application/json',
-            'Authorization' => 'Bearer ' . TokenJWTMockGenerator::getTokenForAdmin($username),
+            'Authorization' => 'Bearer ' . TokenJWTGenerator::getTokenForAdmin($username),
         ];
         return $headers;
     }

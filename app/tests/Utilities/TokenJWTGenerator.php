@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Tests\Mocks\Auth;
+namespace App\Tests\Utilities;
 
 //use Lcobucci\JWT\Builder;
 use DateTimeImmutable;
-use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 
 /**
- * TokenJWTMockGenerator - simulate different tokens jwt
+ * TokenJWTGenerator - simulate different tokens jwt
  */
-class TokenJWTMockGenerator
+class TokenJWTGenerator
 {
     private static function getSigner()
     {
@@ -23,17 +22,13 @@ class TokenJWTMockGenerator
     {
         $pathPrivateKey = getenv('JWT_SECRET_KEY'); //<= value FROM phpunit.xml.dist
         $passphrase = getenv('JWT_PASSPHRASE'); //<= value FROM phpunit.xml.dist
-        //$privateKey = new Key('file://' . $pathPrivateKey);
-        //return $privateKey;
 
         return InMemory::file($pathPrivateKey,$passphrase);
-
-        //return InMemory::plainText('testing');
     }
 
     public static function getTokenForAdmin(string $username)
     {
-        //Example mock to generate:
+        //Example token jwt to generate:
         // {
         //     "iat": 1632489781,
         //     "exp": 1632493381,
@@ -56,4 +51,6 @@ class TokenJWTMockGenerator
 
         return $token->toString();
     }
+
+    //TODO: add expired tokens, token without valid roles, etc for testing
 }
