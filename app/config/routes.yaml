@@ -7,6 +7,11 @@ api_login_check:
    path: /api/login_check
    methods:  [POST]
 
+api_affiliate_create:
+   path: /api/affiliates
+   controller: App\Action\AffiliateCreateAction
+   methods: [POST]
+
 not_found:
    path: /{path}
    controller: App\Controller\DefaultController::notFound

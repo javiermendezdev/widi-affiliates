@@ -20,4 +20,23 @@ class AffiliateRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Affiliate::class);
     }
+
+    public function saveAffiliate(Affiliate $affiliate): Affiliate
+    {
+        $em = $this->getEntityManager();
+        $em->persist($affiliate);
+        $em->flush();
+
+        return $affiliate;
+    }
+
+    public function findByEmail(string $email)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }

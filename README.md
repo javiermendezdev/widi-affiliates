@@ -5,6 +5,7 @@ Es necesario crear una API para dar un servicio apropiado a nuestros afiliados, 
 Es necesario crear los siguientes endpoints:
 
 ## Requisitos
+
 ### Login
 
 <table>
@@ -114,7 +115,6 @@ Es necesario crear los siguientes endpoints:
   </tr>
 </table>
 
-
 ### Crear afiliado
 
 <table>
@@ -194,7 +194,6 @@ Type in your password to be encoded:
   Encoded password   $argon2id$v=19$m=65536,t=4,p=1$3+SFI3tfF1n1aCk6qA9dzg$8ru5Bnm4jOBo2HSK8qzFN77Cplxd/ObFp+d00N+w+gw
  ------------------ ---------------------------------------------------------------------------------------------------
 ```
-
 
 ## TODO
 

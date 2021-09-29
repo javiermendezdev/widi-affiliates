@@ -30,26 +30,26 @@ class AffiliateService
         $this->validator = $validator;
     }
 
-    public function getAffiliate(string $id): ?Affiliate
-    {
-        return $this->affiliateRepository->find($id);
-    }
+    // public function getAffiliate(string $id): ?Affiliate
+    // {
+    //     return $this->affiliateRepository->find($id);
+    // }
 
-    public function listAffiliates(int $page = 1, int $size = 10): array
-    {
-        $items = $this->affiliateRepository->findPaginated($page, $size);
-        $total = $this->affiliateRepository->count([]);
+    // public function listAffiliates(int $page = 1, int $size = 10): array
+    // {
+    //     $items = $this->affiliateRepository->findPaginated($page, $size);
+    //     $total = $this->affiliateRepository->count([]);
 
-        //TODO: pass to custom dto and return this generated dto
-        return [
-            "_metadata" => [
-                "page" => $page,
-                "size" => $size,
-                "total" => $total,
-            ],
-            "items" => $items,
-        ];
-    }
+    //     //TODO: pass to custom dto and return this generated dto
+    //     return [
+    //         "_metadata" => [
+    //             "page" => $page,
+    //             "size" => $size,
+    //             "total" => $total,
+    //         ],
+    //         "items" => $items,
+    //     ];
+    // }
 
     public function createAffiliate(string $email, string $firstname, string $lastname): Affiliate
     {
@@ -71,12 +71,12 @@ class AffiliateService
         return $this->affiliateRepository->saveAffiliate($affiliate);
     }
 
-    public function deleteAffiliateById(string $id)
-    {
-        if (!($affiliate = $this->getAffiliate($id))) {
-            throw new EntityNotExistException();
-        }
+    // public function deleteAffiliateById(string $id)
+    // {
+    //     if (!($affiliate = $this->getAffiliate($id))) {
+    //         throw new EntityNotExistException();
+    //     }
 
-        $this->affiliateRepository->delete($affiliate);
-    }
+    //     $this->affiliateRepository->delete($affiliate);
+    // }
 }
