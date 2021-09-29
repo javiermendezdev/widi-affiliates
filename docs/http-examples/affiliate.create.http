@@ -1,0 +1,5 @@
+# Possible example
+curl -XPOST http://localhost:9999/api/affiliates \
+-d '{"firstname":"Javi","lastname":"Méndez", "email":"javiermendez.dev@gmail.com"}' \
+-H 'Content-Type: application/json' \
+-H "Authorization: Bearer TOKEN!!"

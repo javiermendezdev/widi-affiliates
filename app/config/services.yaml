@@ -1,0 +1,40 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    env(APP_LOG_LEVEL): 'info'
+    env(APP_LOG_FORMATTER): 'monolog.formatter.line'
+    env(JWT_SECRET_KEY): '%kernel.project_dir%/config/jwt/private.pem'
+    env(JWT_PUBLIC_KEY): '%kernel.project_dir%/config/jwt/public.pem'
+    env(JWT_PASSPHRASE): 'k4t3.Affil14t3s'
+    env(JWT_TOKEN_TTL): 3600
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    # SUBSCRIBERS:
+    kernel_exception_subscriber:
+        class: App\Subscriber\ExceptionSubscriber
+        arguments: ['@logger']
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
+

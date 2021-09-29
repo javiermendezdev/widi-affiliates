@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  ############### Traefik
+  # Example: https://jtreminio.com/blog/traefik-on-docker-for-web-developers/
+  reverse-proxy:
+    image: traefik:v1.7 # The official Traefik docker image
+    command: --api --docker --docker.domain=${TRAEFIK_DOMAIN} --logLevel=DEBUG # Enables the web UI and tells Traefik to listen to docker (Test: --docker.domain=docker.localhost --logLevel=DEBUG )
+    env_file: .env
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - widi-affiliates
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=Host: traefik.${TRAEFIK_DOMAIN}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/null:/traefik.toml
+
+networks:
+  widi-affiliates:
+    external: true

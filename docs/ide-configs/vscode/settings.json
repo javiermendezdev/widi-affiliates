@@ -1,0 +1,14 @@
+{
+    //PHPCS
+    "phpcs.standard": "./app/phpcs.xml.dist",
+    "phpcs.executablePath": "./app/vendor/bin/phpcs",
+    //PHPUnit Config:
+    "phpunit.command": "docker-compose exec widi-affiliates",
+    "phpunit.phpunit": "php -d memory_limit=-1 vendor/bin/simple-phpunit", //Symfony bridge
+    // "phpunit.args": [
+    //     "--testdox", ""
+    // ],
+    "phpunit.paths": {
+        "${workspaceFolder}": "/var/www"
+    },
+}

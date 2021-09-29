@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS `affiliates`;
+CREATE DATABASE IF NOT EXISTS `affiliates_test`;

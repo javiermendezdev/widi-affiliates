@@ -1,0 +1,6 @@
+App\Entity\Affiliate:
+  affiliate_allready_exist:
+    __construct: false
+    firstname: "Testing"
+    lastname: "Email Exist"
+    email: 'email-exist@example.com'

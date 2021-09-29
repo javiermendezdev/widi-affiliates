@@ -1,0 +1,14 @@
+parameters:
+    hash: $2y$13$W.TzDXElMo7PW92B5QtO5um8O2Ku6wSkBL7.X32ReR1tYn8wTbFda
+
+App\Entity\User:
+  user_admin:
+    __construct: false
+    username: "admin"
+    roles: "[ROLE_ADMIN]"
+    password: <{hash}>
+  user_user:
+    __construct: false
+    username: "user"
+    roles: "[ROLE_USER]"
+    password: <{hash}>

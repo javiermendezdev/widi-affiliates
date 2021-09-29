@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb:10.6.4
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - '3309:3306'
+    networks:
+      - widi-affiliates
+    labels:
+      - "traefik.enable=false"
+    volumes:
+      - ../volumes/widi-affiliates/mysql/db:/var/lib/mysql
+      - ./docker/databases/mysql/dump:/docker-entrypoint-initdb.d
+
+networks:
+  widi-affiliates:
+    external: true

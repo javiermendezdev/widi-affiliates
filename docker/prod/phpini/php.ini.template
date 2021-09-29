@@ -1,0 +1,40 @@
+[PHP]
+max_execution_time = 30
+max_input_time = 60
+memory_limit = 128M
+post_max_size=550M
+upload_max_filesize=500M
+
+log_errors = off
+error_reporting = off
+
+[Date]
+date.timezone = "Europe/Madrid"
+[mbstring]
+mbstring.internal_encoding = "UTF-8"
+mbstring.language = "Spanish"
+
+;[Session]
+;; Handler used to store/retrieve data.
+;; http://php.net/session.save-handler
+;extension="redis.so"
+;session.save_handler = "redis"
+;session.save_path = "tcp://${REDIS_SESSION_HOST}:${REDIS_SESSION_PORT}?database=${REDIS_SESSION_DB}"
+
+[opcache]
+;https://symfony.com/doc/current/performance.html
+opcache.enable=1
+opcache.interned_strings_buffer = 16
+opcache.max_accelerated_files = 20000
+opcache.memory_consumption = 256
+opcache.validate_timestamps=0
+realpath_cache_size = 4096K
+realpath_cache_ttl = 600
+;preloading https://www.php.net/manual/es/opcache.configuration.php#ini.opcache.preload
+opcache.preload = ${PHPINI_OPCACHE_PRELOAD}
+
+[openssl]
+openssl.cafile = "${PHPINI_CAFILE}"
+
+[apcu]
+apc.enable_cli = 1

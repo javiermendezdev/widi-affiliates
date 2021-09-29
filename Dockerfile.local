@@ -1,0 +1,15 @@
+FROM javiermendezdev/php8-apache:base
+
+ENV APP_ENV=dev \
+    APP_RUNTIME_ENV=dev \
+    # IMPORTANT use the same version of phpunit
+    SYMFONY_PHPUNIT_VERSION=9.5
+
+# pcov for improve phpunit testing code coverage without using xdebug
+RUN pecl install -o -f xdebug pcov \
+    && rm -rf /tmp/*
+
+COPY docker/local /docker-utilities
+COPY docker/prod/app.env.template /docker-utilities/app.env.template
+
+RUN chmod +x /docker-utilities/entrypoint.sh

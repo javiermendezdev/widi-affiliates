@@ -1,0 +1,6 @@
+App\Entity\Affiliate:
+  affiliate_{1..100}:
+    __construct: false
+    firstname: <firstName()>
+    lastname: <lastName()>
+    email: 'no-reply@example<current()>.com'

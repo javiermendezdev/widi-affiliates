@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="tests/bootstrap.php"
+         convertDeprecationsToExceptions="false"
+>
+    <php>
+        <!-- php.ini override -->
+        <ini name="display_errors" value="1" />
+        <ini name="error_reporting" value="-1" />
+        <!-- envs override -->
+        <env name="APP_ENV" value="test" force="true" />
+        <env name="SHELL_VERBOSITY" value="-1" />
+        <env name="SYMFONY_PHPUNIT_REMOVE" value="" />
+        <env name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+        <env name="MYSQL_DB_NAME_TEST" value="affiliates_test"/>
+
+        <!-- TODO: use test values -->
+        <env name="JWT_SECRET_KEY" value="/var/www/app/config/jwt/private.pem"/>
+        <env name="JWT_PUBLIC_KEY" value="/var/www/app/config/jwt/public.pem"/>
+        <env name="JWT_PASSPHRASE" value="k4t3.Affil14t3s"/>
+    </php>
+
+    <testsuites>
+        <testsuite name="Functional Database">
+            <directory>tests/Functional/Database</directory>
+        </testsuite>
+        <testsuite name="Project Test Suite">
+            <directory>tests/Functional/Endpoints</directory>
+            <directory>tests/Functional/Api</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </coverage>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+    </listeners>
+
+    <!-- Run `composer require symfony/panther` before enabling this extension -->
+    <!--
+    <extensions>
+        <extension class="Symfony\Component\Panther\ServerExtension" />
+    </extensions>
+    -->
+</phpunit>

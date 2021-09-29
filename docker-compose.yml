@@ -1,0 +1,33 @@
+version: "3"
+services:
+  widi-affiliates:
+    build:
+      dockerfile: Dockerfile.local
+      context: .
+    ports:
+      - "9999:8080"
+    user: "${EXPORTED_USER}:0"
+    networks:
+      - widi-affiliates
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=8080"
+      - "traefik.frontend.rule=Host: api.${TRAEFIK_DOMAIN}"
+    env_file: .env
+    environment:
+      - APP_SECRET=${APP_SECRET}
+      - APP_DEBUG=${APP_DEBUG}
+      - APP_URL=${APP_URL}
+      - APP_LOG_LEVEL=${APP_LOG_LEVEL}
+      - APP_LOG_FORMATTER=${APP_LOG_FORMATTER}
+      - APP_EXECUTE_MIGRATIONS=true
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_PASSPHRASE=${JWT_PASSPHRASE}
+      - XDEBUG_CLIENT_PORT=9003
+      - XDEBUG_CLIENT_HOST=${XDEBUG_CLIENT_HOST}
+    volumes:
+      - ./app:/var/www/app
+
+networks:
+  widi-affiliates:
+    external: true
