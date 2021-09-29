@@ -30,10 +30,10 @@ class AffiliateService
         $this->validator = $validator;
     }
 
-    // public function getAffiliate(string $id): ?Affiliate
-    // {
-    //     return $this->affiliateRepository->find($id);
-    // }
+    public function getAffiliate(string $id): ?Affiliate
+    {
+        return $this->affiliateRepository->find($id);
+    }
 
     public function listAffiliates(int $page = 1, int $size = 10): array
     {

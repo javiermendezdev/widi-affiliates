@@ -17,6 +17,11 @@ api_affiliate_list:
    methods: [GET]
    controller: App\Action\AffiliateListAction
 
+api_affiliate_get:
+   path: /api/affiliates/{id}
+   methods: [GET]
+   controller: App\Action\AffiliateGetAction
+
 not_found:
    path: /{path}
    controller: App\Controller\DefaultController::notFound
