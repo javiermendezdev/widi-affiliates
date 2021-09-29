@@ -71,12 +71,12 @@ class AffiliateService
         return $this->affiliateRepository->saveAffiliate($affiliate);
     }
 
-    // public function deleteAffiliateById(string $id)
-    // {
-    //     if (!($affiliate = $this->getAffiliate($id))) {
-    //         throw new EntityNotExistException();
-    //     }
+    public function deleteAffiliateById(string $id)
+    {
+        if (!($affiliate = $this->getAffiliate($id))) {
+            throw new EntityNotExistException();
+        }
 
-    //     $this->affiliateRepository->delete($affiliate);
-    // }
+        $this->affiliateRepository->delete($affiliate);
+    }
 }

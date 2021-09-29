@@ -11,16 +11,18 @@ api_affiliate_create:
    path: /api/affiliates
    controller: App\Action\AffiliateCreateAction
    methods: [POST]
-
-api_affiliate_list:
-   path: /api/affiliates
-   methods: [GET]
-   controller: App\Action\AffiliateListAction
-
 api_affiliate_get:
    path: /api/affiliates/{id}
    methods: [GET]
    controller: App\Action\AffiliateGetAction
+api_affiliate_list:
+   path: /api/affiliates
+   methods: [GET]
+   controller: App\Action\AffiliateListAction
+api_affiliate_delete:
+   path: /api/affiliates/{id}
+   methods: [DELETE]
+   controller: App\Action\AffiliateDeleteAction
 
 not_found:
    path: /{path}

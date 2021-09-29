@@ -48,4 +48,11 @@ class AffiliateRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
+    public function delete(Affiliate $affiliate)
+    {
+        $em = $this->getEntityManager();
+        $em->remove($affiliate);
+        $em->flush();
+    }
+
 }

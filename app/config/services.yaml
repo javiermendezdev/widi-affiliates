@@ -54,20 +54,21 @@ services:
         autowire: false
         autoconfigure: false
         arguments: ['@App\Service\AffiliateService']
-
     App\Action\AffiliateGetAction:
         class: App\Action\AffiliateGetAction
         public: true
         autowire: false
-        autoconfigure: fale
+        autoconfigure: false
         arguments: ['@App\Service\AffiliateService']
-        
     App\Action\AffiliateListAction:
         class: App\Action\AffiliateListAction
         public: true
         autowire: false
-        autoconfigure: fale
+        autoconfigure: false
         arguments: ['@App\Service\AffiliateService']
-
-
-    
+    App\Action\AffiliateDeleteAction:
+        class: App\Action\AffiliateDeleteAction
+        public: true
+        autowire: false
+        autoconfigure: false
+        arguments: ['@App\Service\AffiliateService']
